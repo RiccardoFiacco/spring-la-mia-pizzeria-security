@@ -1,13 +1,23 @@
 package org.exercise.spring_la_mia_pizzeria_crud.entity;
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-public class pizza implements Serializable{
+@Entity
+@Table(name = "pizza")
+public class Pizza implements Serializable{
+    @Id
     private String name;
+    @Column(name = "description", nullable = false)
     private String description;
+    @Column(name = "url",  nullable = false)
     private String url;
+    @Column(name = "price", nullable = false)
     private float price;
 
-    public pizza(String name, String description, String url, float price) {
+    public Pizza(String name, String description, String url, float price) {
         this.name = name;
         this.description = description;
         this.url = url;
