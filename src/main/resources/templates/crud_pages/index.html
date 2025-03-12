@@ -9,18 +9,17 @@
     <nav class="pt-4">
         <div class="row justify-content-start align-items-center">
             <div class="col">
-               <span class="fs-3">Benvenuti nella nostra pizzeria! Dai un occhiata al menu.....</span>
+               <span class="fs-3">il nostro menu</span>
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-secondary"><a th:href="@{/}">menu</a></button>
+                <button type="button" class="btn"><a th:href="@{/}">home</a></button>
             </div>
         </div>
     </nav>
     <body class="container"> 
-        <div class="row justify-content-center align-items-center">
-            <div class="col-4 pt-4">
-                <img class="img-fluid m-auto" th:src="@{/img/logo.jpg}">
-            </div>
+        <div class="row g-5 pt-4 card-group">
+            <th:block th:each="pizza : ${pizzas}" th:insert="~{fragment::card(pizza)}"></th:block>
         </div>
+       
     </body>
 </html>
