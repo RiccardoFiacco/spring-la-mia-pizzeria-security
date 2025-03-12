@@ -14,6 +14,7 @@ public class Pizza implements Serializable{
     @Column(name = "price", nullable = false)
     private float price;
 
+    public Pizza() {}
     public Pizza(String name, String description, String url, float price) {
         this.name = name;
         this.description = description;
