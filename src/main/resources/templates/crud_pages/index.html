@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riccardo's Pizzeria</title>
+    <th:block th:insert="~{fragment::style}"></th:block>
+</head>
+    <nav class="pt-4">
+        <div class="row justify-content-start align-items-center">
+            <div class="col">
+               <span class="fs-3">Benvenuti nella nostra pizzeria! Dai un occhiata al menu.....</span>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-secondary"><a th:href="@{/}">menu</a></button>
+            </div>
+        </div>
+    </nav>
+    <body class="container"> 
+        <div class="row justify-content-center align-items-center">
+            <div class="col-4 pt-4">
+                <img class="img-fluid m-auto" th:src="@{/img/logo.jpg}">
+            </div>
+        </div>
+    </body>
+</html>
