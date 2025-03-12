@@ -1,9 +1,6 @@
 package org.exercise.spring_la_mia_pizzeria_crud.entity;
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "pizza")
