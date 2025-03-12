@@ -18,8 +18,12 @@
     </nav>
     <body class="container"> 
         <div class="row g-5 pt-4 card-group">
+          <th:block th:if="${pizzas != null}">
             <th:block th:each="pizza : ${pizzas}" th:insert="~{fragment::card(pizza)}"></th:block>
+          </th:block>
+          <th:block th:if="${pizzas == null}">
+            <div class="col">stiamo rivedendo il nostro menu! torna a ritrovarci!..</div>
+          </th:block>
         </div>
-       
     </body>
 </html>
