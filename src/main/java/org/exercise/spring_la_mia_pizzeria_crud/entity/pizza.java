@@ -3,7 +3,7 @@ import java.io.Serializable;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "pizza")
+@Table(name = "pizzas")
 public class Pizza implements Serializable{
     @Id
     private String name;
