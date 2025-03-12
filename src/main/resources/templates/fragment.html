@@ -12,15 +12,17 @@
 </head>
 <h1 th:fragment="pageHeader(nome)" class="pt-4">Best of the year by <span th:text="${nome}"></span></h1>
 <body>
-    <th:block th:fragment="card(pizza)" th:with="image=${pizza.getImage()}">
-    <a th:href="@{/pizzas/{id}(id=${pizza.getId()})}">
-      <div class="card" style="width: 18rem;">
-       <img th:src="@{img/image}" class="card-img-top">
-       <div class="card-body">
-         <p class="card-text" th:text="${pizza.getName()}"></p>
-       </div>
+    <th:block th:fragment="card(pizza)">
+      <div class="col-4">
+       <a th:href="@{/pizzas/{name}(name=${pizza.getName()})}">
+         <div class="card h-100">
+          <img th:src="@{img/{image}(image=${pizza.getUrl()})}" class="card-img-top img-fluid h-100">
+          <div class="card-body">
+            <p class="card-text" th:text="${pizza.getName()}"></p>
+          </div>
+         </div>
+       </a>
       </div>
-    </a>
     </th:block>
 </body>
 </html>
