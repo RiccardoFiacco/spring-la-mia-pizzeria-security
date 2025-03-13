@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riccardo's Pizzeria</title>
+    <th:block th:insert="~{fragment::style}"></th:block>
+</head>
+    <body class="container"> 
+        <div class="row justify-content-end pt-4">
+            <div class="col-3">
+                <button type="button" class="btn"><a th:href="@{/}">torna alla home</a></button>
+            </div>
+        </div>
+        <th:block th:if="${pizza != null}">
+          <div class="row justify-content-center align-items-center flex-column">
+            <div class="col pt-4">
+                <h1 th:text="${pizza.getName()}"></h1>
+            </div>
+            <div class="col pt-4">
+              <img th:src="@{img/{image}(image=${pizza.getUrl()})}" class="img-fluid m-auto">
+            </div>
+            <div class="row pt-4">
+                <div class="col"> 
+                  <p>Ingredienti: <span th:text="${pizza.getDescription()}"></span></p>
+                </div>
+                <div class="col"> 
+                    <p>Prezzo: <span th:text="${pizza.getPrice()}"></span></p>
+                  </div>
+            </div>
+          </div>
+        </th:block>
+          <th:block th:if="${pizza == null}">
+            <div class="col">sembra esserci un problema nella pizza...</div>
+          </th:block>
+        </div>
+    </body>
+</html>
