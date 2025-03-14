@@ -13,12 +13,19 @@
                <span class="fs-3">il nostro menu</span>
             </div>
             <div class="col">
-              <form action="/pizzas" id="searchForm" onkeyup="search()">
-                <input type="text" name="nome" placeholder="Cerca una pizza..." th:value="${nome}">
-              </form>
-              <form action="/pizzas" id="searchForm">  
-                <button type="submit">back</button>
-              </form>
+              <div class="row">
+                <div class="col">
+                  <form action="/pizzas" id="searchForm" onkeyup="search()">
+                    <input type="text" name="nome" placeholder="Cerca una pizza..." th:value="${nome}">
+                  </form>
+                </div>
+                <div class="col">
+                  <form action="/pizzas" id="searchForm">  
+                    <button type="submit">azzera filtro</button>
+                  </form>
+                </div>
+              </div>
+              
             </div>
             <div class="col-3">
                 <button type="button" class="btn"><a th:href="@{/}">home</a></button>
