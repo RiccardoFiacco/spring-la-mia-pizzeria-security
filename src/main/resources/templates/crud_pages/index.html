@@ -5,11 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riccardo's Pizzeria</title>
     <th:block th:insert="~{fragment::style}"></th:block>
+    <script th:src="@{/js/script.js}"></script>
 </head>
     <nav class="pt-4">
         <div class="row justify-content-start align-items-center">
             <div class="col">
                <span class="fs-3">il nostro menu</span>
+            </div>
+            <div class="col">
+              <form action="/pizzas" id="searchForm" onkeyup="search()">
+                <input type="text" name="nome" placeholder="Cerca una pizza..." th:value="${nome}">
+              </form>
+              <form action="/pizzas" id="searchForm">  
+                <button type="submit">back</button>
+              </form>
             </div>
             <div class="col-3">
                 <button type="button" class="btn"><a th:href="@{/}">home</a></button>
