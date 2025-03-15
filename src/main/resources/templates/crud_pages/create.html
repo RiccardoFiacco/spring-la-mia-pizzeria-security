@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riccardo's Pizzeria</title>
+    <th:block th:insert="~{fragment::style}"></th:block>
+    <script th:src="@{/js/script.js}"></script>
+</head>
+    <nav class="pt-4">
+        <div class="row justify-content-start align-items-center">
+            <div class="col">
+               <span class="fs-3">Aggiungi una pizza...</span>
+            </div> 
+            <div class="col-3">
+                <button type="button" class="btn"><a th:href="@{/}">home</a></button>
+            </div>
+        </div>
+    </nav>
+    <body class="container"> 
+        <div class="row">
+            <div class="col">
+                <form th:action="@{/pizzas/create}" th:object="${pizza}" id="form" method="post">
+                    <input type="text" th:field="*{name}" placeholder="nome..."/>
+                    <input type="text" th:field="*{description}" placeholder="ingredienti..."/>
+                    <input type="text" th:field="*{price}" placeholder="prezzo..."/>
+                    <input type="text" th:field="*{url}" placeholder="foto..."/>
+                    <button class="btn btn-success">Invia</button>
+                    <div th:if="${#fields.hasAnyErrors()}">
+                        <p th:each="err : ${#fields.allErrors()}" th:text="${err}">...</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
