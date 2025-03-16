@@ -10,26 +10,24 @@
     <nav class="pt-4">
         <div class="row justify-content-start align-items-center">
             <div class="col">
-               <span class="fs-3">il nostro menu</span>
+               <span class="fs-3">Il nostro menu</span>
             </div>
             <div class="col">
-              <div class="row">
+              <div class="row justify-content-center">
                 <div class="col">
                   <form action="/pizzas" id="searchForm" onkeyup="search()">
-                    <input type="text" name="nome" placeholder="Cerca una pizza..." th:value="${nome}">
-                  </form>
-                </div>
-                <div class="col">
-                  <form action="/pizzas" id="searchForm">  
-                    <button type="submit">azzera filtro</button>
+                    <div class="input-group">
+                      <input type="text" name="nome" class="form-control" placeholder="Cerca una pizza..." th:value="${nome}" aria-describedby="button-addon2">
+                      <button class="btn btn-outline-info" type="submit" id="button-addon2">azzera filtro</button>
+                    </div>
                   </form>
                 </div>
               </div>
               
             </div>
             <div class="col-3">
-                <button type="button" class="btn"><a th:href="@{/}">home</a></button>
-                <button type="button" class="btn"><a th:href="@{/pizzas/create}">aggiungi una pizza</a></button>
+                <button type="button" class="btn btn-secondary"><a th:href="@{/}" class="text-decoration-none ">home</a></button>
+                <button type="button" class="btn btn-info"><a th:href="@{/pizzas/create}" class="text-decoration-none ">aggiungi una pizza</a></button>
             </div>
         </div>
     </nav>
