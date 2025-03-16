@@ -17,7 +17,15 @@
          <div class="card h-100">
           <img th:src="@{img/{image}(image=${pizza.getUrl()})}" class="card-img-top img-fluid h-100">
           <div class="card-body">
-            <p class="card-text" th:text="${pizza.getName()}"></p>
+            <div class="row flex-justify-content-between">
+              <div class="col-4">
+                <span class="card-text" th:text="${pizza.getName()}"></span>
+              </div>
+              <div class="col-4">
+                <a th:href="@{/pizzas/update/{id}(id=${pizza.getId()})}"><span class="btn btn-success">Aggiorna</span></a>
+                <span class="btn">Elimina</span>
+              </div>
+            </div>
           </div>
          </div>
        </a>

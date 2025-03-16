@@ -52,12 +52,28 @@ public class PizzaController {
     }
 
     @PostMapping("/create")
-    public String postMethodName(Model m, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult br){
+    public String create(Model m, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult br){
         
         if(br.hasErrors()){
             return "crud_pages/create";
         }
 
+        repo.save(formPizza);
+        return "redirect:/pizzas";
+    }
+
+    @GetMapping("/update/{id}")
+    public String update(Model model, @PathVariable Integer id) {
+        model.addAttribute("pizza", repo.findById(id).get());
+        return "crud_pages/update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String update(Model m, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult br){
+        if(br.hasErrors()){
+            return "crud_pages/update";
+        }
+        System.out.println(formPizza);
         repo.save(formPizza);
         return "redirect:/pizzas";
     }
