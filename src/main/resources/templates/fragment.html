@@ -6,29 +6,29 @@
 
     <th:block th:fragment="style">
         <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
     </th:block>
      
 </head>
 <h1 th:fragment="pageHeader(nome)" class="pt-4">Best of the year by <span th:text="${nome}"></span></h1>
 <body>
+    
     <th:block th:fragment="card(pizza)">
-      <div class="col-4">
-       <a th:href="@{/pizzas/{id}(id=${pizza.getId()})}">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
          <div class="card h-100">
           <img th:src="@{img/{image}(image=${pizza.getUrl()})}" class="card-img-top img-fluid h-100">
           <div class="card-body">
-            <div class="row flex-justify-content-between">
-              <div class="col-4">
-                <span class="card-text" th:text="${pizza.getName()}"></span>
+            <div class="row flex-row flex-justify-content-between row-gap-3">
+              <div class="col">
+                <a th:href="@{/pizzas/{id}(id=${pizza.getId()})}" th:text="${pizza.getName()}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"></a>
               </div>
-              <div class="col-4">
-                <a th:href="@{/pizzas/update/{id}(id=${pizza.getId()})}"><span class="btn btn-success">Aggiorna</span></a>
-                <span class="btn">Elimina</span>
+              <div class="d-flex justify-content-between">
+                <a th:href="@{/pizzas/update/{id}(id=${pizza.getId()})}" class="btn btn-success w-50 me-1">Aggiorna</a>
+                <button class="btn btn-danger w-50">Elimina</button>
               </div>
             </div>
           </div>
          </div>
-       </a>
       </div>
     </th:block>
 
