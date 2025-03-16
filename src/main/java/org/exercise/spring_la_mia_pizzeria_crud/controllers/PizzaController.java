@@ -13,6 +13,8 @@ import java.util.List;
 import org.exercise.spring_la_mia_pizzeria_crud.model.Pizza;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.PizzaRepository;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -77,6 +79,13 @@ public class PizzaController {
         repo.save(formPizza);
         return "redirect:/pizzas";
     }
+
+    @PostMapping("/delete/{id}")
+    public String delete(Model model, @PathVariable Integer id) {
+        repo.deleteById(id);
+        return  "redirect:/pizzas";
+    }
+    
 }
 
 
