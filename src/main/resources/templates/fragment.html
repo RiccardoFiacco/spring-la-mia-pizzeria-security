@@ -35,7 +35,43 @@
     </th:block>
 
 
-    <th:block th:fragment="form(pizza)">
+    <th:block th:fragment="addForm(pizza)">
+      <div class="row pt-4">
+        <form th:action="@{/pizzas/create}" th:object="${pizza}" id="form" method="post">
+            <div class="col">
+                <span class="pe-4 fs-5">Nome della pizza</span>
+                <input type="text" th:field="*{name}" placeholder="nome..."/> 
+                <ul th:if="${#fields.hasErrors('name')}" class="text-danger">
+                    <li th:each="err : ${#fields.errors('name')}" th:text="${err}" >...</li>
+                </ul>
+            </div>
+            <div class="col">
+                <span class="pe-4 fs-5">Ingredienti</span>
+                <input type="text" th:field="*{description}" placeholder="ingredienti..."/> 
+                <ul th:if="${#fields.hasErrors('description')}" class="text-danger">
+                    <li th:each="err : ${#fields.errors('description')}" th:text="${err}" >...</li>
+                </ul>
+            </div>
+            <div class="col">
+                <span class="pe-4 fs-5">Prezzo</span>
+                <input type="text" th:field="*{price}" placeholder="prezzo..."/>
+                <ul th:if="${#fields.hasErrors('price')}" class="text-danger">
+                    <li th:each="err : ${#fields.errors('price')}" th:text="${err}" >...</li>
+                </ul>
+            </div>
+            <div class="col">
+                <span class="pe-4 fs-5">Immagine</span>
+                <input type="text" th:field="*{url}" placeholder="foto..."/> 
+                <ul th:if="${#fields.hasErrors('url')}" class="text-danger">
+                    <li th:each="err : ${#fields.errors('url')}" th:text="${err}" >...</li>
+                </ul>
+            </div>
+            <div class="col pt-4"><button class="btn btn-success">Invia</button></div>
+        </form>
+    </div>
+    </th:block>
+
+    <th:block th:fragment="updateForm(pizza)">
       <div class="row pt-4">
         <form th:action="@{/pizzas/update/{id}(id=${pizza.getId()})}" th:object="${pizza}" id="form" method="post">
             <div class="col">
