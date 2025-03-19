@@ -18,7 +18,7 @@
                 <h1 th:text="${pizza.getName()}"></h1>
             </div>
             <div class="col pt-4">
-              <img th:src="@{img/{image}(image=${pizza.getUrl()})}" class="img-fluid m-auto">
+              <img th:src="@{/img/{image}(image=${pizza.getUrl()})}" class="img-fluid m-auto">
             </div>
             <div class="row pt-4">
                 <div class="col"> 

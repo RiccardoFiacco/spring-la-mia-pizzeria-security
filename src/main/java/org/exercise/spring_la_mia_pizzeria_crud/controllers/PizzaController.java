@@ -13,8 +13,6 @@ import java.util.List;
 import org.exercise.spring_la_mia_pizzeria_crud.model.Pizza;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.PizzaRepository;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 
 
 
@@ -36,28 +34,28 @@ public class PizzaController {
         }
         
         model.addAttribute("pizzas", pizzas);
-        return "crud_pages/index";
+        return "pizzas_crud_pages/index";
     }
 
     @GetMapping("/{id}")
     public String show(Model model, @PathVariable("id") Integer id){
         Pizza pizza = repo.findById(id).get();
         model.addAttribute("pizza", pizza);
-        return "crud_pages/show";
+        return "pizzas_crud_pages/show";
     }
 
 
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("pizza", new Pizza());
-        return "crud_pages/create";
+        return "pizzas_crud_pages/create";
     }
 
     @PostMapping("/create")
-    public String create(Model m, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult br){
+    public String create(Model model, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult){
         
-        if(br.hasErrors()){
-            return "crud_pages/create";
+        if(bindingResult.hasErrors()){
+            return "pizzas_crud_pages/create";
         }
 
         repo.save(formPizza);
@@ -67,22 +65,20 @@ public class PizzaController {
     @GetMapping("/update/{id}")
     public String update(Model model, @PathVariable Integer id) {
         model.addAttribute("pizza", repo.findById(id).get());
-        return "crud_pages/update";
+        return "pizzas_crud_pages/update";
     }
 
     @PostMapping("/update/{id}")
-    public String update(Model m, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult br){
-        if(br.hasErrors()){
-            return "crud_pages/update";
+    public String update(Model model, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "pizzas_crud_pages/update";
         }
-        System.out.println(formPizza);
         repo.save(formPizza);
         return "redirect:/pizzas";
     }
 
     @PostMapping("/delete/{id}")
     public String delete(Model model, @PathVariable Integer id) {
-        System.out.println(id);
         repo.deleteById(id);
         return  "redirect:/pizzas";
     }
