@@ -17,28 +17,21 @@
 
     <th:block th:fragment="card(pizza)">
         <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-           <div class="card h-100">
-            <img th:src="@{./img/{image}(image=${pizza.getUrl()})}" class="card-img-top img-fluid h-100">
-            <div class="card-body">
-              <div class="row flex-row flex-justify-content-between row-gap-3">
-                <div class="col">
-                  <a th:href="@{/pizzas/{id}(id=${pizza.getId()})}" th:text="${pizza.getName()}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"></a>
-                </div>
-                <div class="d-flex gap-2">
-                  <a th:href="@{/pizzas/update/{id}(id=${pizza.getId()})}" class="btn btn-success flex-fill">Aggiorna</a>
-                  <form th:action="@{/pizzas/delete/{id}(id=${pizza.getId()})}" method="post" class="w-100">
-                      <button class="btn btn-danger flex-fill" type="submit" id="submitButton">Elimina</button>
-                  </form>
-              </div>
-              </div>
-            </div>
-           </div>
-        </div>
-      </th:block>
-
-                            <!-- Bottone che apre il modale
-                            <button class="btn btn-danger flex-fill" type="button" data-bs-toggle="modal"
-                                th:data-bs-target="'modal-' + ${pizza.getId()}">
+            <div class="card h-100">
+                <img th:src="@{./img/{image}(image=${pizza.getUrl()})}" class="card-img-top img-fluid h-100">
+                <div class="card-body">
+                    <div class="row flex-row flex-justify-content-between row-gap-3">
+                        <div class="col">
+                            <a th:href="@{/pizzas/{id}(id=${pizza.getId()})}" th:text="${pizza.getName()}"
+                                class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"></a>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a th:href="@{/pizzas/update/{id}(id=${pizza.getId()})}"
+                                class="btn btn-success flex-fill">
+                                Aggiorna
+                            </a>
+                             <button class="btn btn-danger flex-fill" type="button" data-bs-toggle="modal"
+                                th:data-bs-target="'#modal-' + ${pizza.getId()}">
                                 Elimina
                             </button>
                             <div class="modal fade" th:id="'modal-' + ${pizza.getId()}" data-bs-backdrop="static"
@@ -65,8 +58,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
 
     <th:block th:fragment="addForm(pizza)">
         <div class="row pt-4">
@@ -139,8 +136,6 @@
             </form>
         </div>
     </th:block>
-    <!-- Bootstrap JS (questo include il bundle completo con Popper.js) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
