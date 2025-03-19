@@ -3,6 +3,8 @@ import java.io.Serializable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -12,21 +14,25 @@ public class Pizza implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     @Size(min=5)
+    @NotBlank(message = "campo deve essere popolato")
     private String name;
 
     
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     @Size(min=5)
+    @NotBlank(message = "campo deve essere popolato")
     private String description;
 
-    @Column(name = "url",  nullable = false)
+    @Column(name = "url")
+    @NotBlank(message = "campo deve essere popolato")
     private String url;
     
-    @Column(name = "price", nullable = false)
+    @Column(name = "price")
     @Min(5)
     @Max(16)
+    @NotNull(message = "campo deve essere popolato")
     private float price;
 
     public Pizza() {}
