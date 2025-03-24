@@ -39,7 +39,7 @@
                   <th scope="col">Nome offerta</th>
                   <th scope="col">Inizio</th>
                   <th scope="col">Fine</th>
-                  
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -47,6 +47,7 @@
                   <td th:text="${offert.getTitle()}"></td>
                   <td th:text="${offert.getStart()}"></td>
                   <td th:text="${offert.getEnd()}"></td>
+                  <td><button type="button" class="btn btn-info"><a th:href="@{/offerts/update/{id}(id=${offert.getId()})}" class="text-decoration-none">modifica</a></button></td>
                 </tr>
               </tbody>
             </table>
