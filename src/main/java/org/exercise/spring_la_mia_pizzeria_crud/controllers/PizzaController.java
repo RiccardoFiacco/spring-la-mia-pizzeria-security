@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class PizzaController {
     @Autowired
     private PizzaRepository repo;
+    @Autowired
+    private OffertaRepository offertRepo;
 
     @GetMapping 
     public String index(@RequestParam(value = "nome", required = false) String nome, Model model){
@@ -88,6 +90,9 @@ public class PizzaController {
     
     @GetMapping("/{id}/offerts")
     public String offerts(Model model,@PathVariable Integer id) {
+        Offerta offerta = new Offerta();
+        offerta.setPizza(repo.findById(id).get());
+        model.addAttribute("offert", offerta);
         return "offerts_crud_pages/offerts_form";
     }
     
