@@ -28,6 +28,10 @@ public class Offerta implements Serializable{
     @NotBlank(message = "campo deve essere popolato")
     private LocalDate end;
 
+    @ManyToOne
+    @JoinColumn(name = "pizza_id")
+    private Pizza pizza;
+    
     public int getId() {
         return id;
     }
@@ -60,7 +64,18 @@ public class Offerta implements Serializable{
         this.end = end;
     }
 
-    
+    public Pizza getPizza() {
+        return pizza;
+    }
 
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
+    }
+
+    @Override
+    public String toString() {
+        return "Offerta [id=" + id + ", title=" + title + ", start=" + start + ", end=" + end + ", pizza=" + pizza
+                + "]";
+    }
 
 }
