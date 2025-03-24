@@ -97,8 +97,7 @@ public class Pizza implements Serializable{
     }
     @Override
     public String toString() {
-        return "Pizza [id=" + id + ", name=" + name + ", description=" + description + ", url=" + url + ", price="
-                + price ;
+        return "Pizza [id=" + id + ", name=" + name + ", description=" + description + ", url=" + url + ", price="+ price;
     }
 
 }
