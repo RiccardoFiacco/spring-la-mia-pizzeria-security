@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
+
+import org.exercise.spring_la_mia_pizzeria_crud.model.Offerta;
 import org.exercise.spring_la_mia_pizzeria_crud.model.Pizza;
+import org.exercise.spring_la_mia_pizzeria_crud.repository.OffertaRepository;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.PizzaRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -21,7 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class PizzaController {
     @Autowired
     private PizzaRepository repo;
-   
+
     @GetMapping 
     public String index(@RequestParam(value = "nome", required = false) String nome, Model model){
         
@@ -81,6 +84,11 @@ public class PizzaController {
     public String delete(Model model, @PathVariable Integer id) {
         repo.deleteById(id);
         return  "redirect:/pizzas";
+    }
+    
+    @GetMapping("/{id}/offerts")
+    public String offerts(Model model,@PathVariable Integer id) {
+        return "offerts_crud_pages/offerts_form";
     }
     
 }
