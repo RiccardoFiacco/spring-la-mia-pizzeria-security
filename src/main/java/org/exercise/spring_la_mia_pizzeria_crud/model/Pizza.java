@@ -1,5 +1,7 @@
 package org.exercise.spring_la_mia_pizzeria_crud.model;
 import java.io.Serializable;
+import java.util.List;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -19,7 +21,6 @@ public class Pizza implements Serializable{
     @NotBlank(message = "campo deve essere popolato")
     private String name;
 
-    
     @Column(name = "description")
     @Size(min=5)
     @NotBlank(message = "campo deve essere popolato")
@@ -35,13 +36,17 @@ public class Pizza implements Serializable{
     @NotNull(message = "campo deve essere popolato")
     private float price;
 
+    @OneToMany(mappedBy = "pizza")
+    private List<Offerta> offerts;
+
     public Pizza() {}
-    public Pizza(String name, String description, String url, float price, int id) {
+    public Pizza(String name, String description, String url, float price, int id, List<Offerta> offerts) {
         this.name = name;
         this.description = description;
         this.url = url;
         this.price = price;
         this.id = id;
+        this.offerts = offerts;
     }
     
     public int getId() {
@@ -83,10 +88,18 @@ public class Pizza implements Serializable{
         this.price = price;
     }
 
+    public List<Offerta> getOfferts() {
+            return offerts;
+    }
+
+    public void setOfferts(List<Offerta> offerts) {
+        this.offerts = offerts;
+    }
+    
     @Override
     public String toString() {
         return "Pizza [id=" + id + ", name=" + name + ", description=" + description + ", url=" + url + ", price="
-                + price + "]";
+                + price + ", offerts=" + offerts + "]";
     }
-    
+
 }
