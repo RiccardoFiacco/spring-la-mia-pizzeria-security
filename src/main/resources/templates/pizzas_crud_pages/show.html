@@ -32,10 +32,34 @@
               </div>
             </div>
           </div>
-        </th:block>
-          <th:block th:if="${pizza == null}">
-            <div class="col">sembra esserci un problema nella pizza...</div>
+          <th:block th:if="${!offerts.isEmpty()}">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Nome offerta</th>
+                  <th scope="col">Inizio</th>
+                  <th scope="col">Fine</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="offert : ${offerts}">
+                  <th th:text="${offert.getId()}"></th>
+                  <td th:text="${offert.getTitle()}"></td>
+                  <td th:text="${offert.getStart()}"></td>
+                  <td th:text="${offert.getEnd()}"></td>
+                </tr>
+              </tbody>
+            </table>
           </th:block>
+          <th:block th:if="${offerts.isEmpty()}">
+            <div class="col">non ci sono offerte...</div>
+          </th:block>
+        </th:block>
+        <th:block th:if="${pizza == null}">
+          <div class="col">sembra esserci un problema nella pizza...</div>
+        </th:block>
         </div>
     </body>
 </html>

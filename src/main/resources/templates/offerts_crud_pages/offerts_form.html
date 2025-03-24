@@ -9,7 +9,7 @@
     <body class="container"> 
         <div class="row pt-4">
             <h1>Offerte per la pizza [[${offert.pizza.getName()}]]</h1>
-            <form th:object="${offert}" id="form" method="post">
+            <form th:action="@{/offerts/create}" th:object="${offert}" id="form" method="post">
                 <div class="col">
                     <span class="pe-4 fs-5">Titolo dell'offerta</span>
                     <input type="text" th:field="*{title}" placeholder="titolo..." />

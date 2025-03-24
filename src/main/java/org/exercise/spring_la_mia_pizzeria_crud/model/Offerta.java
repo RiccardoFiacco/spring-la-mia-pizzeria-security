@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 
@@ -21,11 +22,11 @@ public class Offerta implements Serializable{
     private String title;
 
     @Column(name = "start")
-    @NotBlank(message = "campo deve essere popolato")
+    @NotNull(message = "campo deve essere popolato")
     private LocalDate start;
 
     @Column(name = "end")
-    @NotBlank(message = "campo deve essere popolato")
+    @NotNull(message = "campo deve essere popolato")
     private LocalDate end;
 
     @ManyToOne

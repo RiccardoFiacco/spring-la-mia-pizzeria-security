@@ -95,11 +95,10 @@ public class Pizza implements Serializable{
     public void setOfferts(List<Offerta> offerts) {
         this.offerts = offerts;
     }
-    
     @Override
     public String toString() {
         return "Pizza [id=" + id + ", name=" + name + ", description=" + description + ", url=" + url + ", price="
-                + price + ", offerts=" + offerts + "]";
+                + price ;
     }
 
 }

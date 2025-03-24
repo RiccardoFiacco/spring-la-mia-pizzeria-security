@@ -46,6 +46,7 @@ public class PizzaController {
     public String show(Model model, @PathVariable("id") Integer id){
         Pizza pizza = repo.findById(id).get();
         model.addAttribute("pizza", pizza);
+        model.addAttribute("offerts", pizza.getOfferts());
         return "pizzas_crud_pages/show";
     }
 
