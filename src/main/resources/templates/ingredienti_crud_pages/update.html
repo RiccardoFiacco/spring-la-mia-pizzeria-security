@@ -10,14 +10,14 @@
     <nav class="pt-4">
         <div class="row justify-content-start align-items-center">
             <div class="col">
-               <span class="fs-3">Aggiungi una pizza...</span>
+               <span class="fs-3">Modifica un ingrediente...</span>
             </div> 
             <div class="col-3">
                 <button type="button" class="btn"><a th:href="@{/}">home</a></button>
             </div>
         </div>
     </nav>
-    <body class="container" >
-        <th:block th:insert="~{fragment::updateForm(pizza=${pizza})}"></th:block> 
+    <body class="container">
+        <th:block th:insert="~{fragment::ingredientForm(ingredient=${ingredient}, flag=${flag})}"></th:block> 
     </body>
 </html>

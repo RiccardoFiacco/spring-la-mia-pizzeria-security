@@ -138,7 +138,7 @@
     </th:block>
     
     <th:block th:fragment="ingredientForm(ingredient, flag)">
-        <form th:action="${flag}? @{/ingredients/update/{id}(id=${offert.getId()})} : @{/ingredients/create}" th:object="${ingredient}" id="form" method="post">
+        <form th:action="${flag}? @{/ingredients/update/{id}(id=${ingredient.getId()})} : @{/ingredients/create}" th:object="${ingredient}" id="form" method="post">
             <div class="col">
                 <span class="pe-4 fs-5">ingrediente</span>
                 <input type="text" th:field="*{name}" placeholder="nome..." />

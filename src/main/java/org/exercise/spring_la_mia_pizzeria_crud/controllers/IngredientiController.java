@@ -11,7 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -43,4 +46,21 @@ public class IngredientiController {
         ingredientiRepository.save(ingrediente);
         return "redirect:/ingredients";
     }
+
+    @GetMapping("/update/{id}")
+    public String getFormUpdate(Model model, @PathVariable("id") int id){
+        model.addAttribute("ingredient", ingredientiRepository.findById(id).get());
+        model.addAttribute("flag", true);
+        return "ingredienti_crud_pages/update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String postMethodName(Model model, @Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "ingredienti_crud_pages/index";
+        }
+        ingredientiRepository.save(ingrediente);
+        return "redirect:/ingredients";
+    }
+    
 }
