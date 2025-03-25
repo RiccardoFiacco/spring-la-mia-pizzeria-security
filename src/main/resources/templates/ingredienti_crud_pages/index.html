@@ -54,6 +54,10 @@
           <th:block th:if="${ingredients.size() == 0}">
             <div class="col">stiamo inserendo gli ingredienti nel nostro menu, torna a ritrovarci!..</div>
           </th:block>
+          <div class="row pt-4">
+            <h4>aggiungi un ingrediente</h4>
+            <th:block th:insert="~{fragment::ingredientForm(ingredient=${ingredient}, flag=false)}"></th:block> 
+          </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>

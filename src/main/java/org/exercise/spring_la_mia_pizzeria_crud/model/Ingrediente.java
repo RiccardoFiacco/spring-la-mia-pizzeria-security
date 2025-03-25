@@ -13,7 +13,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "ingredients")
-public class Ingredienti implements Serializable{
+public class Ingrediente implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -26,10 +26,10 @@ public class Ingredienti implements Serializable{
     @ManyToMany(mappedBy = "ingredients")
     private List<Pizza> pizzas;
 
-    public Ingredienti() {
+    public Ingrediente() {
     }
 
-    public Ingredienti(int id, @NotBlank(message = "il campo deve essere popolato") @Size(min = 5) String name,
+    public Ingrediente(int id, @NotBlank(message = "il campo deve essere popolato") @Size(min = 5) String name,
             List<Pizza> pizzas) {
         this.id = id;
         this.name = name;

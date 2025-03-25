@@ -46,7 +46,7 @@ public class Pizza implements Serializable{
         joinColumns = @JoinColumn(name="pizza_id"),
         inverseJoinColumns = @JoinColumn(name="ingredient_id")
     )
-    private List<Ingredienti> ingredients;
+    private List<Ingrediente> ingredients;
 
     public Pizza() {}
     public Pizza(String name, String description, String url, float price, int id, List<Offerta> offerts) {
@@ -105,10 +105,10 @@ public class Pizza implements Serializable{
         this.offerts = offerts;
     }
 
-     public List<Ingredienti> getIngredients() {
+     public List<Ingrediente> getIngredients() {
         return ingredients;
     }
-    public void setIngredients(List<Ingredienti> ingredients) {
+    public void setIngredients(List<Ingrediente> ingredients) {
         this.ingredients = ingredients;
     }
 

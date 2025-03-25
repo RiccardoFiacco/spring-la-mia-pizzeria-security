@@ -136,6 +136,19 @@
             </form>
         </div>
     </th:block>
+    
+    <th:block th:fragment="ingredientForm(ingredient, flag)">
+        <form th:action="${flag}? @{/ingredients/update/{id}(id=${offert.getId()})} : @{/ingredients/create}" th:object="${ingredient}" id="form" method="post">
+            <div class="col">
+                <span class="pe-4 fs-5">ingrediente</span>
+                <input type="text" th:field="*{name}" placeholder="nome..." />
+                 <ul th:if="${#fields.hasErrors('name')}" class="text-danger">
+                    <li th:each="err : ${#fields.errors('name')}" th:text="${err}">...</li>
+                </ul>                 
+            </div>
+            <div class="col pt-4"><button class="btn btn-success">Invia</button></div>
+        </form>
+    </th:block>
 </body>
 
 </html>
