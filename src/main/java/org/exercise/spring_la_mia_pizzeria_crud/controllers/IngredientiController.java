@@ -57,7 +57,7 @@ public class IngredientiController {
     @PostMapping("/update/{id}")
     public String postMethodName(Model model, @Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return "ingredienti_crud_pages/index";
+            return "ingredienti_crud_pages/update";
         }
         ingredientiRepository.save(ingrediente);
         return "redirect:/ingredients";
