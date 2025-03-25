@@ -1,13 +1,14 @@
 package org.exercise.spring_la_mia_pizzeria_crud.model;
 import java.io.Serializable;
 import java.util.List;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 
 @Entity
 @Table(name = "pizzas")
@@ -38,6 +39,14 @@ public class Pizza implements Serializable{
 
     @OneToMany(mappedBy = "pizza")
     private List<Offerta> offerts;
+
+    @ManyToMany
+    @JoinTable(
+        name="ingredient_pizza",
+        joinColumns = @JoinColumn(name="pizza_id"),
+        inverseJoinColumns = @JoinColumn(name="ingredient_id")
+    )
+    private List<Ingredinti> ingredients;
 
     public Pizza() {}
     public Pizza(String name, String description, String url, float price, int id, List<Offerta> offerts) {
@@ -95,9 +104,19 @@ public class Pizza implements Serializable{
     public void setOfferts(List<Offerta> offerts) {
         this.offerts = offerts;
     }
+
+     public List<Ingredinti> getIngredients() {
+        return ingredients;
+    }
+    public void setIngredients(List<Ingredinti> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+
     @Override
     public String toString() {
         return "Pizza [id=" + id + ", name=" + name + ", description=" + description + ", url=" + url + ", price="+ price;
     }
+   
 
 }
