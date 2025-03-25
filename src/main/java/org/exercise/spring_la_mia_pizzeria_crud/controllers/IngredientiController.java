@@ -1,12 +1,12 @@
 package org.exercise.spring_la_mia_pizzeria_crud.controllers;
+import java.util.List;
 import org.exercise.spring_la_mia_pizzeria_crud.model.Ingrediente;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.IngredientiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.validation.Valid;
-
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +21,17 @@ public class IngredientiController {
     private IngredientiRepository ingredientiRepository;
 
     @GetMapping
-    public String Index(Model model){
+    public String Index(Model model, @RequestParam(value = "nome", required = false) String nome){
         Ingrediente ingrediente = new Ingrediente();
-        model.addAttribute("ingredients", ingredientiRepository.findAll());
         model.addAttribute("ingredient", ingrediente);
+
+        List<Ingrediente> ingredientes;
+        if(nome != null && !nome.isEmpty()){
+            ingredientes = ingredientiRepository.findByNameContaining(nome);
+        } else {
+            ingredientes = ingredientiRepository.findAll();
+        }
+        model.addAttribute("ingredients", ingredientes);
         return "ingredienti_crud_pages/index";
     }
 
