@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riccardo's Pizzeria</title>
+    <th:block th:insert="~{fragment::style}"></th:block>
+    <script th:src="@{/js/script.js}"></script>
+</head>
+    <nav class="pt-4">
+        <div class="row justify-content-start align-items-center">
+            <div class="col">
+               <span class="fs-3">I nostri ingredienti</span>
+            </div>
+            <div class="col">
+              <div class="row justify-content-center">
+                <div class="col">
+                  <form action="/ingredients" id="searchForm" onkeyup="search()">
+                    <div class="input-group">
+                      <input type="text" name="nome" class="form-control" placeholder="Cerca un ingrediente..." th:value="${name}" aria-describedby="button-addon2">
+                      <button class="btn btn-outline-info" type="submit" id="button-addon2">azzera filtro</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-secondary"><a th:href="@{/}" class="text-decoration-none ">home</a></button>
+                <button type="button" class="btn btn-info"><a th:href="@{/pizzas/create}" class="text-decoration-none ">aggiungi un ingrediente</a></button>
+            </div>
+        </div>
+    </nav>
+    <body class="container"> 
+        <div class="row g-5 pt-4 card-group pb-4">
+          <th:block th:if="${ingredients.size() != 0}">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">id</th>
+                      <th scope="col">nome</th>               
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="ingredient : ${ingredients}">
+                      <td th:text="${ingredient.getId()}"></td>
+                      <td th:text="${ingredient.getName()}"></td>
+                      <td><button type="button" class="btn btn-info"><a th:href="@{/offerts/update/{id}(id=${offert.getId()})}" class="text-decoration-none">modifica</a></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </th:block>
+          </th:block>
+          <th:block th:if="${ingredients.size() == 0}">
+            <div class="col">stiamo inserendo gli ingredienti nel nostro menu, torna a ritrovarci!..</div>
+          </th:block>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>
