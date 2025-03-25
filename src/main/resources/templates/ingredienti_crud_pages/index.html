@@ -38,14 +38,15 @@
                   <thead>
                     <tr>
                       <th scope="col">id</th>
-                      <th scope="col">nome</th>               
+                      <th scope="col">nome</th> 
+                      <th scope="col"></th>               
                     </tr>
                   </thead>
                   <tbody>
                     <tr th:each="ingredient : ${ingredients}">
                       <td th:text="${ingredient.getId()}"></td>
                       <td th:text="${ingredient.getName()}"></td>
-                      <td><button type="button" class="btn btn-info"><a th:href="@{/offerts/update/{id}(id=${offert.getId()})}" class="text-decoration-none">modifica</a></button></td>
+                      <td><button type="button" class="btn btn-info"><a th:href="@{/ingredients/update/{id}(id=${ingredient.getId()})}" class="text-decoration-none">modifica</a></button></td>
                     </tr>
                   </tbody>
                 </table>

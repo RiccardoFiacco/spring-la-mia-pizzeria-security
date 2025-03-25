@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
@@ -27,12 +28,12 @@ public class IngredientiController {
         return "ingredienti_crud_pages/index";
     }
 
-    @GetMapping("/create")
+    @PostMapping("/create")
     public String createIng(Model model, @Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "ingredienti_crud_pages/index";
         }
-       
+        ingredientiRepository.save(ingrediente);
         return "redirect:/ingredients";
     }
 }
