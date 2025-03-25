@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.exercise.spring_la_mia_pizzeria_crud.model.Offerta;
 import org.exercise.spring_la_mia_pizzeria_crud.model.Pizza;
+import org.exercise.spring_la_mia_pizzeria_crud.repository.IngredientiRepository;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.OffertaRepository;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.PizzaRepository;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +26,7 @@ public class PizzaController {
     @Autowired
     private PizzaRepository repo;
     @Autowired
-    private OffertaRepository offertRepo;
+    private IngredientiRepository ingredientiRepo;
 
     @GetMapping 
     public String index(@RequestParam(value = "nome", required = false) String nome, Model model){
@@ -54,6 +55,7 @@ public class PizzaController {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("pizza", new Pizza());
+        model.addAttribute("ingredients", ingredientiRepo.findAll());
         return "pizzas_crud_pages/create";
     }
 
@@ -61,6 +63,7 @@ public class PizzaController {
     public String create(Model model, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult){
         
         if(bindingResult.hasErrors()){
+            model.addAttribute("ingredients", ingredientiRepo.findAll());
             return "pizzas_crud_pages/create";
         }
 
@@ -71,12 +74,14 @@ public class PizzaController {
     @GetMapping("/update/{id}")
     public String update(Model model, @PathVariable Integer id) {
         model.addAttribute("pizza", repo.findById(id).get());
+        model.addAttribute("ingredients", ingredientiRepo.findAll());
         return "pizzas_crud_pages/update";
     }
 
     @PostMapping("/update/{id}")
     public String update(Model model, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
+            model.addAttribute("ingredients", ingredientiRepo.findAll());
             return "pizzas_crud_pages/update";
         }
         repo.save(formPizza);

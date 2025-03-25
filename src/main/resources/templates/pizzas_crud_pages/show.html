@@ -22,7 +22,11 @@
             </div>
             <div class="row pt-4 pb-4">
               <div class="col"> 
-                <p>Ingredienti: <span th:text="${pizza.getDescription()}"></span></p>
+                <p>Ingredienti: 
+                  <th:block th:each="ingredient : ${pizza.getIngredients()}">
+                    <span th:text="${ingredient.getName()}"></span>
+                  </th:block>
+                </p>
               </div>
               <div class="col"> 
                   <p>Prezzo: <span th:text="${pizza.getPrice()}"></span></p>

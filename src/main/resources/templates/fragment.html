@@ -65,7 +65,7 @@
         </div>
     </th:block>
 
-    <th:block th:fragment="addForm(pizza)">
+    <th:block th:fragment="addForm(pizza, ingredients)">
         <div class="row pt-4">
             <form th:action="@{/pizzas/create}" th:object="${pizza}" id="form" method="post">
                 <div class="col">
@@ -96,12 +96,23 @@
                         <li th:each="err : ${#fields.errors('url')}" th:text="${err}">...</li>
                     </ul>
                 </div>
+                <div class="col">
+                    <div class="single-category form-check" th:each="ingredient : ${ingredients}">
+                        <input type="checkbox" 
+                         th:id="'ingredient-' + ${ingredient.getId()}"
+                         th:field="*{ingredients}" 
+                         th:value="${ingredient.getId()}" />
+                        <label th:for="'ingredient-' + ${ingredient.getId()}"
+                        class="form-check-label"
+                        th:text="${ingredient.name}"></label>
+                    </div>
+                </div>
                 <div class="col pt-4"><button class="btn btn-success">Invia</button></div>
             </form>
         </div>
     </th:block>
 
-    <th:block th:fragment="updateForm(pizza)">
+    <th:block th:fragment="updateForm(pizza, ingredients)">
         <div class="row pt-4">
             <form th:action="@{/pizzas/update/{id}(id=${pizza.getId()})}" th:object="${pizza}" id="form" method="post">
                 <div class="col">
@@ -131,6 +142,17 @@
                     <ul th:if="${#fields.hasErrors('url')}" class="text-danger">
                         <li th:each="err : ${#fields.errors('url')}" th:text="${err}">...</li>
                     </ul>
+                </div>
+                <div class="col">
+                    <div class="single-category form-check" th:each="ingredient : ${ingredients}">
+                        <input type="checkbox" 
+                         th:id="'ingredient-' + ${ingredient.getId()}"
+                         th:field="*{ingredients}" 
+                         th:value="${ingredient.getId()}" />
+                        <label th:for="'ingredient-' + ${ingredient.getId()}"
+                        class="form-check-label"
+                        th:text="${ingredient.name}"></label>
+                    </div>
                 </div>
                 <div class="col pt-4"><button class="btn btn-success">Invia</button></div>
             </form>
