@@ -39,7 +39,8 @@
                     <tr>
                       <th scope="col">id</th>
                       <th scope="col">nome</th> 
-                      <th scope="col"></th>               
+                      <th scope="col"></th>     
+                      <th scope="col"></th>           
                     </tr>
                   </thead>
                   <tbody>
@@ -47,6 +48,11 @@
                       <td th:text="${ingredient.getId()}"></td>
                       <td th:text="${ingredient.getName()}"></td>
                       <td><button type="button" class="btn btn-info"><a th:href="@{/ingredients/update/{id}(id=${ingredient.getId()})}" class="text-decoration-none">modifica</a></button></td>
+                      <td>
+                        <form th:action="@{/ingredients/delete/{id}(id=${ingredient.getId()})}" method="post">
+                          <button type="submit" class="btn btn-danger">elimina</button>
+                        </form>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

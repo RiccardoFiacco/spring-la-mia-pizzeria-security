@@ -1,6 +1,7 @@
 package org.exercise.spring_la_mia_pizzeria_crud.controllers;
 import java.util.List;
 import org.exercise.spring_la_mia_pizzeria_crud.model.Ingrediente;
+import org.exercise.spring_la_mia_pizzeria_crud.model.Pizza;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.IngredientiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -63,4 +63,13 @@ public class IngredientiController {
         return "redirect:/ingredients";
     }
     
+    @PostMapping("/delete/{id}")
+    public String deleteIng(Model model, @PathVariable("id") int id){
+        Ingrediente ingredient = ingredientiRepository.findById(id).get();
+        for (Pizza pizza : ingredient.getPizzas()) {
+            pizza.getIngredients().remove(ingredient);
+        }
+        ingredientiRepository.delete(ingredient);
+        return "redirect:/ingredients";
+    }
 }
