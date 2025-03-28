@@ -14,7 +14,6 @@ import java.util.List;
 import org.exercise.spring_la_mia_pizzeria_crud.model.Offerta;
 import org.exercise.spring_la_mia_pizzeria_crud.model.Pizza;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.IngredientiRepository;
-import org.exercise.spring_la_mia_pizzeria_crud.repository.OffertaRepository;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.PizzaRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 
