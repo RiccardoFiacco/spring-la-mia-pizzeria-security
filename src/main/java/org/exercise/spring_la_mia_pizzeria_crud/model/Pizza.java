@@ -1,17 +1,19 @@
 package org.exercise.spring_la_mia_pizzeria_crud.model;
 import java.io.Serializable;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 
 @Entity
 @Table(name = "pizzas")
+
 public class Pizza implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +40,7 @@ public class Pizza implements Serializable{
     private float price;
 
     @OneToMany(mappedBy = "pizza")
+    @JsonManagedReference("pizza-offerta")
     private List<Offerta> offerts;
 
     @ManyToMany
@@ -46,6 +49,7 @@ public class Pizza implements Serializable{
         joinColumns = @JoinColumn(name="pizza_id"),
         inverseJoinColumns = @JoinColumn(name="ingredient_id")
     )
+    @JsonManagedReference("pizza-ingrediente")
     private List<Ingrediente> ingredients;
 
     public Pizza() {}
