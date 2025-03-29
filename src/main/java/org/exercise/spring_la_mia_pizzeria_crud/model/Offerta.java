@@ -2,6 +2,8 @@ package org.exercise.spring_la_mia_pizzeria_crud.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -75,8 +77,7 @@ public class Offerta implements Serializable{
 
     @Override
     public String toString() {
-        return "Offerta [id=" + id + ", title=" + title + ", start=" + start + ", end=" + end + ", pizza=" + pizza
-                + "]";
+        return "Offerta [id=" + id + ", title=" + title + ", start=" + start + ", end=" + end ;
     }
 
 }
