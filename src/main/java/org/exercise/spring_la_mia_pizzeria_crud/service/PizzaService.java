@@ -1,16 +1,12 @@
 package org.exercise.spring_la_mia_pizzeria_crud.service;
-
 import java.util.List;
 import java.util.Optional;
-
 import org.exercise.spring_la_mia_pizzeria_crud.model.Offerta;
 import org.exercise.spring_la_mia_pizzeria_crud.model.Pizza;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.OffertaRepository;
 import org.exercise.spring_la_mia_pizzeria_crud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class PizzaService {
