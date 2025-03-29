@@ -27,14 +27,13 @@ public class Ingrediente implements Serializable{
     private String name;
 
     @ManyToMany(mappedBy = "ingredients")
-    @JsonBackReference("pizza-ingrediente")
+    @JsonBackReference
     private List<Pizza> pizzas;
 
     public Ingrediente() {
     }
 
-    public Ingrediente(int id, @NotBlank(message = "il campo deve essere popolato") @Size(min = 5) String name,
-            List<Pizza> pizzas) {
+    public Ingrediente(int id,String name, List<Pizza> pizzas) {
         this.id = id;
         this.name = name;
         this.pizzas = pizzas;

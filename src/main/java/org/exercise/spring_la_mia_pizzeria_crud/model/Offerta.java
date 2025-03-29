@@ -1,10 +1,7 @@
 package org.exercise.spring_la_mia_pizzeria_crud.model;
 import java.io.Serializable;
 import java.time.LocalDate;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -34,7 +31,7 @@ public class Offerta implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "pizza_id", nullable = false)
-    @JsonBackReference("pizza-offerta")
+    @JsonBackReference
     private Pizza pizza;
     
     public int getId() {

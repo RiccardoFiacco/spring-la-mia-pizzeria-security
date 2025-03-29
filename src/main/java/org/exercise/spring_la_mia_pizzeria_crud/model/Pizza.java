@@ -49,7 +49,7 @@ public class Pizza implements Serializable{
         joinColumns = @JoinColumn(name="pizza_id"),
         inverseJoinColumns = @JoinColumn(name="ingredient_id")
     )
-    @JsonManagedReference("pizza-ingrediente")
+    @JsonManagedReference
     private List<Ingrediente> ingredients;
 
     public Pizza() {}

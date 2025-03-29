@@ -10,6 +10,8 @@ import org.exercise.spring_la_mia_pizzeria_crud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class PizzaService {
     
@@ -34,6 +36,9 @@ public class PizzaService {
         return pizza.get(); 
     }
     
+    public Optional<Pizza> findPizzaById(Integer id) {
+        return pizzaRepository.findById(id); 
+    }
 
     public Pizza createPizza(Pizza pizza) {
         return pizzaRepository.save(pizza);
