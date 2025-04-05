@@ -40,7 +40,7 @@ public class Pizza implements Serializable {
     @NotNull(message = "campo deve essere popolato")
     private float price;
 
-    @OneToMany(mappedBy = "pizzas")
+    @OneToMany(mappedBy = "pizza")
     @JsonManagedReference("pizza-offerta")
     private List<Offerta> offerts;
 

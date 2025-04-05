@@ -13,6 +13,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.GenerationType;
+
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -42,5 +43,5 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
-    
+
 }

@@ -26,13 +26,9 @@ public class User {
     @NotBlank(message = "La password non può essere vuota")
     private String password;
 
-    @ManyToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "role_user",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
-
 
     public Integer getId() {
         return id;
@@ -58,5 +54,4 @@ public class User {
         this.password = password;
     }
 
-    
 }
