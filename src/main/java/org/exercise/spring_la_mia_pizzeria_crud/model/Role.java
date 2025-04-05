@@ -1,8 +1,15 @@
 package org.exercise.spring_la_mia_pizzeria_crud.model;
 
 import jakarta.persistence.GeneratedValue;
+
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.GenerationType;
@@ -15,6 +22,10 @@ public class Role {
 
     @NotBlank(message = "Il nome non può essere vuoto")
     private String name;
+
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+    @JsonBackReference
+    private Set<User> users;
 
     public Integer getId() {
         return id;

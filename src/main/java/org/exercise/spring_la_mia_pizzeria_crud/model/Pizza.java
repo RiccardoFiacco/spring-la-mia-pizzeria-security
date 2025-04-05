@@ -1,4 +1,5 @@
 package org.exercise.spring_la_mia_pizzeria_crud.model;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,45 +15,43 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "pizzas")
 
-public class Pizza implements Serializable{
+public class Pizza implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name")
-    @Size(min=5)
+    @Size(min = 5)
     @NotBlank(message = "campo deve essere popolato")
     private String name;
 
     @Column(name = "description")
-    @Size(min=5)
+    @Size(min = 5)
     @NotBlank(message = "campo deve essere popolato")
     private String description;
 
     @Column(name = "url")
     @NotBlank(message = "campo deve essere popolato")
     private String url;
-    
+
     @Column(name = "price")
     @Min(5)
     @Max(16)
     @NotNull(message = "campo deve essere popolato")
     private float price;
 
-    @OneToMany(mappedBy = "pizza")
+    @OneToMany(mappedBy = "pizzas")
     @JsonManagedReference("pizza-offerta")
     private List<Offerta> offerts;
 
     @ManyToMany
-    @JoinTable(
-        name="ingredient_pizza",
-        joinColumns = @JoinColumn(name="pizza_id"),
-        inverseJoinColumns = @JoinColumn(name="ingredient_id")
-    )
+    @JoinTable(name = "ingredient_pizza", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
     @JsonManagedReference
     private List<Ingrediente> ingredients;
 
-    public Pizza() {}
+    public Pizza() {
+    }
+
     public Pizza(String name, String description, String url, float price, int id, List<Offerta> offerts) {
         this.name = name;
         this.description = description;
@@ -61,10 +60,11 @@ public class Pizza implements Serializable{
         this.id = id;
         this.offerts = offerts;
     }
-    
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -102,25 +102,25 @@ public class Pizza implements Serializable{
     }
 
     public List<Offerta> getOfferts() {
-            return offerts;
+        return offerts;
     }
 
     public void setOfferts(List<Offerta> offerts) {
         this.offerts = offerts;
     }
 
-     public List<Ingrediente> getIngredients() {
+    public List<Ingrediente> getIngredients() {
         return ingredients;
     }
+
     public void setIngredients(List<Ingrediente> ingredients) {
         this.ingredients = ingredients;
     }
 
-
     @Override
     public String toString() {
-        return "Pizza [id=" + id + ", name=" + name + ", description=" + description + ", url=" + url + ", price="+ price;
+        return "Pizza [id=" + id + ", name=" + name + ", description=" + description + ", url=" + url + ", price="
+                + price;
     }
-   
 
 }
